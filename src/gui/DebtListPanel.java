@@ -117,7 +117,7 @@ public class DebtListPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				Debt selectedDebt = ((DebtTableModel) selectedTable.getModel()).getDebt(selectedTable.getSelectedRow());
 				System.out.println(selectedDebt.getAmount() + " " + selectedDebt.getWhat());
-				selectedDebt.setIsConfirmed(e.getSource() == accept);
+				//selectedDebt.setIsConfirmed(e.getSource() == accept);
 				// TODO: Verify???!!!!?!??!?!?!?!?
 				Session.session.send(selectedDebt.toXML());
 			}
@@ -353,8 +353,8 @@ public class DebtListPanel extends JPanel{
 	}
 	
 	public static void main(String[] args) {
-		User u = new User("Stian", "123");
-		User u2 = new User("Arne", "qazqaz");
+		User u = new User("Stian");
+		User u2 = new User("Arne");
 		u.addPendingDebt(new Debt(0, 100, "NOK", u2, u, "Test", u));
 		u.addPendingDebt(new Debt(0, 20, "NOK", u, u2, "Potetgull + brus", u2));
 		u.addPendingDebt(new Debt(4, 12, "testers", u2, u, "Testzz", u2));

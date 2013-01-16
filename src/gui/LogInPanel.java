@@ -11,6 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import logic.Debt;
+import logic.DebtStatus;
+import logic.User;
+
 import network.Constants;
 
 import session.Session;
@@ -71,6 +75,9 @@ public class LogInPanel extends JPanel {
 					break;
 				case ACCEPTED:
 					System.out.println("Log in OK!");
+					JPanel p = new JPanel();
+					//Session.session.addPanel();
+					
 					break;
 				case WRONG_INFORMATION:
 					System.out.println("Wrong username/password!");
