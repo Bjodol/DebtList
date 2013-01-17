@@ -75,8 +75,7 @@ public class LogInPanel extends JPanel {
 					break;
 				case ACCEPTED:
 					System.out.println("Log in OK!");
-					JPanel p = new JPanel();
-					//Session.session.addPanel();
+					Session.session.addPanel(new DebtDashboard());
 					
 					break;
 				case WRONG_INFORMATION:

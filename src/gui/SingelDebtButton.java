@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -16,12 +17,14 @@ public class SingelDebtButton extends JButton {
 	
 	public SingelDebtButton(logic.Debt debt) {
 	super();
+	setPreferredSize(new Dimension(400, 30));
 	
 	infoString = "";
 		
 	switch (debt.getStatus()) {
 		case REQUESTED:
-			infoString += "Request from " + debt.getRequestedBy() + ": ";
+			System.out.println("Bøh!");
+			infoString = "Request from " + debt.getRequestedBy().getUsername() + ": ";
 			setBackground(new Color(0xFFFF66));
 			break;
 		case CONFIRMED:
@@ -29,10 +32,10 @@ public class SingelDebtButton extends JButton {
 			//Decides if it is a good or a bad debt
 			if (Session.session.getUser().equals(debt.getTo())) {
 				setBackground(new Color(0x99FF66)); //Green
-				infoString = debt.getTo().getUsername() + ": ";
+				infoString = debt.getFrom().getUsername() + ": ";
 			} else if (Session.session.getUser().equals(debt.getFrom())) {
 				setBackground(new Color(0xFF4D4D)); //Red
-				infoString = debt.getFrom().getUsername() + ": ";
+				infoString = debt.getTo().getUsername() + ": ";
 			} else {
 				MessageDialog eDialog = new MessageDialog("Debt undecided");
 			}
@@ -44,7 +47,8 @@ public class SingelDebtButton extends JButton {
 		}
 	
 	infoString += debt.getAmount() + " " + debt.getWhat() + ", " +'"' + debt.getComment() + '"' + "."; 
-	setText(infoString);	
+	setText(infoString);
+	setHorizontalAlignment(LEFT);
 	}
 
 }
